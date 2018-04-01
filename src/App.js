@@ -11,7 +11,7 @@ class App extends Component {
       <div className='App'>
         <Banner />
         <PWDOptions />
-        <button id='fullWidth' className='bttn-material-flat bttn-md bttn-warning'>Generate my next password</button>
+        <button id='fullWidth' className='bttn-material-flat bttn-md bttn-warning'>Generate a safe password</button>
         <PWDRender />
       </div>
     );

@@ -1,6 +1,4 @@
 import React from 'react';
-import './PWDOptions.css';
-
 
 const PWDOptions = (props) => {
     return (
