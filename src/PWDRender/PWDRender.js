@@ -1,10 +1,12 @@
 import React from 'react';
-import './material-flat.css';
 
 const PWDRender = (props) => {
     return (
         <div>
-            <button class="bttn-material-flat bttn-md bttn-warning">Generate my next password</button>
+            <div>
+                <p>]d/+e7nqF%:*AB*7</p>
+                <button class="bttn-material-flat bttn-md bttn-warning">Copy password</button>
+            </div>
         </div>
     )
 };
