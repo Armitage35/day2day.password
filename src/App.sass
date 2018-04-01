@@ -50,7 +50,8 @@ $borderGrey: #8492A6
         float: right
         position: relative
         top: -5px
-        
+
+// toggles forked from https://codepen.io/LeonardMeagher2/
 input[type="checkbox"]
   outline: none
   appearance: none
@@ -88,3 +89,74 @@ input[type="checkbox"]
     left: 22px
   &:disabled
     opacity: 0.5
+
+// slider forked from https://codepen.io/seanstopnik/
+.rangeSlider
+  width: 100%
+
+.rangeSliderRange
+  -webkit-appearance: none
+  width: calc(100% - (73px))
+  height: 10px
+  border-radius: 5px
+  background: #d7dcdf
+  outline: none
+  padding: 0
+  margin: 0
+  &::-webkit-slider-thumb
+    -webkit-appearance: none
+    appearance: none
+    width: 20px
+    height: 20px
+    border-radius: 50%
+    background: $darkGrey
+    cursor: pointer
+    -webkit-transition: background .15s ease-in-out
+    transition: background .15s ease-in-out
+    &:hover
+      background: $borderGrey
+  &:active::-webkit-slider-thumb
+    background: $borderGrey
+  &::-moz-range-thumb
+    width: 20px
+    height: 20px
+    border: 0
+    border-radius: 50%
+    background: $darkGrey
+    cursor: pointer
+    -webkit-transition: background .15s ease-in-out
+    transition: background .15s ease-in-out
+    &:hover
+      background: $borderGrey
+  &:active::-moz-range-thumb
+    background: $borderGrey
+  &:focus::-webkit-slider-thumb
+    -webkit-box-shadow: 0 0 0 3px #fff, 0 0 0 6px $borderGrey
+    box-shadow: 0 0 0 3px #fff, 0 0 0 6px $borderGrey
+
+.rangeSliderValue
+  display: inline-block
+  position: relative
+  width: 35px
+  color: #fff
+  line-height: 20px
+  text-align: center
+  border-radius: 3px
+  background: $darkGrey
+  padding: 5px 10px
+  margin-left: 8px
+  &:after
+    position: absolute
+    top: 8px
+    left: -7px
+    width: 0
+    height: 0
+    border-top: 7px solid transparent
+    border-right: 7px solid $darkGrey
+    border-bottom: 7px solid transparent
+    content: ''
+
+input
+  &::-moz-focus-inner, &::-moz-focus-outer
+    border: 0
+    

@@ -5,7 +5,10 @@ const PWDOptions = (props) => {
         <div className='PWDOptions'>
             <h2>Set your preferences</h2>
             <h4>Password length</h4>
-            <input type='range' min='1' max='100' value='50' class='slider' id='myRange' />
+            <div class="rangeSlider">
+              <input class="rangeSliderRange" type="range" value="100" min="0" max="500" />
+              <span class="rangeSliderValue">0</span>
+            </div>
             <h4>Advanced</h4>
             <div className='advancedOptions'>
                 <div>
