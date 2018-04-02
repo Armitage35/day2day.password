@@ -1,18 +1,18 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
+import PWDOptions from './PWDOptions/PWDOptions.js';
+import PWDRender from './PWDRender/PWDRender.js';
+import Banner from './Banner/Banner.js';
 import './App.css';
+import './material-flat.css';
 
 class App extends Component {
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+      <div className='App'>
+        <Banner />
+        <PWDOptions />
+        <button id='fullWidth' className='bttn-material-flat bttn-md bttn-warning'>Generate a safe password</button>
+        <PWDRender />
       </div>
     );
   }

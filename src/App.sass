@@ -1,0 +1,188 @@
+@import url('https://fonts.googleapis.com/css?family=Quicksand')
+@import url('https://fonts.googleapis.com/css?family=Cutive+Mono')
+
+$fonts: 'Quicksand', sans-serif
+$darkGrey: #47525E
+$borderGrey: #8492A6
+$borderRadius: 2px
+
+body
+    margin: 0
+
+h2
+    margin: 0
+
+h4
+    margin: 10px 0
+
+label
+    margin-left: 5px
+
+#root
+    background-color: #F7F7F7
+    width: 100vw
+    height: 100vh
+
+.App 
+    margin: auto
+    padding: 20px 10%
+    height: 100vh
+    max-width: 400px
+
+.banner
+    background-image: url('https://images.unsplash.com/photo-1461685265823-f8d5d0b08b9b?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=4b87e7f4904696799221804c5bf04ef8&auto=format&fit=crop&w=1500&q=80')
+    background-size: cover
+    margin-bottom: 10px
+    padding: 10px 0
+    border-radius: $borderRadius
+    p
+        text-align: center
+        font-size: 48px
+        margin: 10px 0
+        font-family: $fonts
+        color: white
+
+#fullWidth
+    width: 100%
+    margin: 10px 0
+    
+.PWDOptions
+    background-color: white
+    border: solid 1px $borderGrey
+    font-family: $fonts
+    padding: 10px
+    border-radius: $borderRadius
+    
+.passwordRender
+    background-color: white
+    padding: 10px 10px 13px 5px
+    border: solid 1px $borderGrey
+    border-radius: $borderRadius
+    .generatedPassword 
+        font-family: 'Cutive Mono', monospace
+        padding: 10px 14px
+        font-size: 14px
+        width: 50px
+        font-weight: bold
+        color: $darkGrey
+        display: inline
+        background-color: #F5F5F5
+    button
+        float: right
+        position: relative
+        top: -5px
+
+
+
+
+// toggles forked from https://codepen.io/LeonardMeagher2/
+input[type="checkbox"]
+  outline: none
+  appearance: none
+  width: 40px
+  height: 16px
+  border: 1px solid #aaa
+  border-radius: $borderRadius
+  background: #ebebeb
+  position: relative
+  display: inline-block
+  overflow: hidden
+  vertical-align: middle
+  transition: background 0.3s
+  box-sizing: border-box
+  &:after
+    content: ''
+    position: absolute
+    top: -1px
+    left: -1px
+    width: 14px
+    height: 14px
+    background: white
+    border: 1px solid #aaa
+    border-radius: $borderRadius
+    transition: left 0.1s cubic-bezier(0.785, 0.135, 0.15, 0.86)
+  &:checked
+    background: $darkGrey
+    border-color: $borderGrey
+    &:after
+      left: 23px
+      border-color: $borderGrey
+  &:hover:not(:checked):not(:disabled):after, &:focus:not(:checked):not(:disabled):after
+    left: 0px
+  &:hover:checked:not(:disabled):after, &:focus:checked:not(:disabled):after
+    left: 22px
+  &:disabled
+    opacity: 0.5
+
+
+
+
+// slider forked from https://codepen.io/seanstopnik/
+.rangeSlider
+  width: 100%
+
+.rangeSliderRange
+  -webkit-appearance: none
+  width: calc(100% - (73px))
+  height: 10px
+  border-radius: 5px
+  background: #d7dcdf
+  outline: none
+  padding: 0
+  margin: 0
+  &::-webkit-slider-thumb
+    -webkit-appearance: none
+    appearance: none
+    width: 20px
+    height: 20px
+    border-radius: 50%
+    background: $darkGrey
+    cursor: pointer
+    -webkit-transition: background .15s ease-in-out
+    transition: background .15s ease-in-out
+    &:hover
+      background: $borderGrey
+  &:active::-webkit-slider-thumb
+    background: $borderGrey
+  &::-moz-range-thumb
+    width: 20px
+    height: 20px
+    border: 0
+    border-radius: 50%
+    background: $darkGrey
+    cursor: pointer
+    -webkit-transition: background .15s ease-in-out
+    transition: background .15s ease-in-out
+    &:hover
+      background: $borderGrey
+  &:active::-moz-range-thumb
+    background: $borderGrey
+  &:focus::-webkit-slider-thumb
+    -webkit-box-shadow: 0 0 0 3px #fff, 0 0 0 6px $borderGrey
+    box-shadow: 0 0 0 3px #fff, 0 0 0 6px $borderGrey
+
+.rangeSliderValue
+  display: inline-block
+  position: relative
+  width: 35px
+  color: #fff
+  line-height: 20px
+  text-align: center
+  border-radius: $borderRadius
+  background: $darkGrey
+  padding: 5px 10px
+  margin-left: 8px
+  &:after
+    position: absolute
+    top: 8px
+    left: -7px
+    width: 0
+    height: 0
+    border-top: 7px solid transparent
+    border-right: 7px solid $darkGrey
+    border-bottom: 7px solid transparent
+    content: ''
+
+input
+  &::-moz-focus-inner, &::-moz-focus-outer
+    border: 0
