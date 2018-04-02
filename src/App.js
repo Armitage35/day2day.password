@@ -8,8 +8,13 @@ import './material-flat.css';
 class App extends Component {
 
   state = {
+    displayAdvancedOptions: false,
     passwordReadyForRender: false,
     generatedPassword: ''
+  }
+  
+  advancedOptionsHandler = () => {
+    this.setState({displayAdvancedOptions: true});
   }
 
   displayPasswordHandler = () => {
@@ -30,7 +35,7 @@ class App extends Component {
     return (
       <div className='App'>
         <Banner />
-        <PWDOptions />
+        <PWDOptions showAdvanced={this.state.displayAdvancedOptions} toggleAdvanced={this.advancedOptionsHandler} />
         <button id='fullWidth' onClick={this.displayPasswordHandler} className='bttn-material-flat bttn-md bttn-warning'>Generate a safe password</button>
         <PWDRender ready={this.state.passwordReadyForRender} pwd={this.state.generatedPassword} />
       </div>
