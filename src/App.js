@@ -6,23 +6,33 @@ import './App.css';
 import './material-flat.css';
 
 class App extends Component {
-  
+
   state = {
-    passwordReadyForRender: false
+    passwordReadyForRender: false,
+    generatedPassword: ''
   }
-  
+
   displayPasswordHandler = () => {
-    this.setState({passwordReadyForRender: true});
-    console.log('super')
+    let charNum = Math.floor((Math.random() * 11) + 5),
+      text = '';
+
+    const possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+
+    for (var i = 0; i < charNum; i++) {
+      text += possible.charAt(Math.floor(Math.random() * possible.length));
+    }
+
+    this.setState({ passwordReadyForRender: true, generatedPassword: text});
   }
-  
+
+
   render() {
     return (
       <div className='App'>
         <Banner />
         <PWDOptions />
         <button id='fullWidth' onClick={this.displayPasswordHandler} className='bttn-material-flat bttn-md bttn-warning'>Generate a safe password</button>
-        <PWDRender />
+        <PWDRender ready={this.state.passwordReadyForRender} pwd={this.state.generatedPassword} />
       </div>
     );
   }

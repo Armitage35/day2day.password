@@ -1,14 +1,18 @@
 import React from 'react';
 
 const PWDRender = (props) => {
-    return (
-        <div>
-            <div className='passwordRender'>
-                <p className='generatedPassword'>]d/+e7nqF%:*AB*7</p>
-                <button className='bttn-material-flat bttn-sm bttn-warning'>Copy</button>
+    if (props.ready) {
+        return (
+            <div>
+                <div className='passwordRender'>
+                    <p className='generatedPassword'>{props.pwd}</p>
+                    <button className='bttn-material-flat bttn-sm bttn-warning'>Copy</button>
+                </div>
             </div>
-        </div>
-    );
+        );
+    } else {
+        return null;
+    }
 };
 
 export default PWDRender;
