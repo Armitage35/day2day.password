@@ -5,27 +5,27 @@ const PWDOptions = (props) => {
         <div className='PWDOptions'>
             <h2>Set your preferences</h2>
             <h4>Password length</h4>
-            <div class='rangeSlider'>
-              <input class='rangeSliderRange' type='range' min='0' max='25' />
-              <span class='rangeSliderValue'>0</span>
+            <div className='rangeSlider'>
+              <input className='rangeSliderRange' type='range' min='0' max='25' />
+              <span className='rangeSliderValue'>0</span>
             </div>
             <h4>Advanced</h4>
             <div className='advancedOptions'>
                 <div>
                     <input type='checkbox' id='symbols' />
-                    <label for='symbols'>Include symbols</label>
+                    <label htmlFor='symbols'>Include symbols</label>
                 </div>
                 <div>
                     <input type='checkbox' id='numbers' />
-                    <label for='numbers'>Include numbers</label>
+                    <label htmlFor='numbers'>Include numbers</label>
                 </div>
                 <div>
                     <input type='checkbox' id='upperChar' />
-                    <label for='upperChar'>Include uppercase characters</label>
+                    <label htmlFor='upperChar'>Include uppercase characters</label>
                 </div>
                 <div>
                     <input type='checkbox' id='lowerChar' />
-                    <label for='lowerChar'>Include lowercase characters</label>
+                    <label htmlFor='lowerChar'>Include lowercase characters</label>
                 </div>
             </div>
         </div>

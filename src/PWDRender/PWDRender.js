@@ -5,7 +5,7 @@ const PWDRender = (props) => {
         <div>
             <div className='passwordRender'>
                 <p className='generatedPassword'>]d/+e7nqF%:*AB*7</p>
-                <button class='bttn-material-flat bttn-sm bttn-warning'>Copy</button>
+                <button className='bttn-material-flat bttn-sm bttn-warning'>Copy</button>
             </div>
         </div>
     );
