@@ -14,7 +14,9 @@ class App extends Component {
   }
   
   advancedOptionsHandler = () => {
-    this.setState({displayAdvancedOptions: true});
+    let advancedOptionsSwitch = this.state.displayAdvancedOptions;
+    advancedOptionsSwitch = !advancedOptionsSwitch;
+    this.setState({displayAdvancedOptions: advancedOptionsSwitch});
   }
 
   displayPasswordHandler = () => {

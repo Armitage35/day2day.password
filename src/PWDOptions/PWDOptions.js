@@ -15,7 +15,7 @@ const PWDOptions = (props) => {
         return (
             <div className='PWDOptions'>
                 {baseView}
-                <h4>Advanced <button onClick={props.toggleAdvanced}>{chevronDown}</button></h4>
+                <h4>Advanced <button onClick={props.toggleAdvanced} className='chevronBttn'>{chevronDown}</button></h4>
             </div>
         );
 
