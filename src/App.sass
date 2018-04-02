@@ -1,20 +1,40 @@
 @import url('https://fonts.googleapis.com/css?family=Quicksand')
+@import url('https://fonts.googleapis.com/css?family=Cutive+Mono')
 
 $fonts: 'Quicksand', sans-serif
 $darkGrey: #47525E
 $borderGrey: #8492A6
+$borderRadius: 2px
 
-.App 
-    margin-top: 0px
+body
+    margin: 0
+
+h2
+    margin: 0
+
+h4
+    margin: 10px 0
+
+label
+    margin-left: 5px
+
+#root
     background-color: #F7F7F7
-    padding: 20px 10% 20px 10%
+    width: 100vw
     height: 100vh
 
+.App 
+    margin: auto
+    padding: 20px 10%
+    height: 100vh
+    max-width: 400px
+
 .banner
-    background-image: url('https://images.unsplash.com/photo-1468971050039-be99497410af?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=a2c0a3304a3277c81c4f1a0adb83bdb1&auto=format&fit=crop&w=2380&q=80')
+    background-image: url('https://images.unsplash.com/photo-1461685265823-f8d5d0b08b9b?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=4b87e7f4904696799221804c5bf04ef8&auto=format&fit=crop&w=1500&q=80')
     background-size: cover
-    margin-bottom: 25px
-    padding: 10px 0 10px 0
+    margin-bottom: 10px
+    padding: 10px 0
+    border-radius: $borderRadius
     p
         text-align: center
         font-size: 48px
@@ -31,25 +51,29 @@ $borderGrey: #8492A6
     border: solid 1px $borderGrey
     font-family: $fonts
     padding: 10px
-    border-radius: 2px
+    border-radius: $borderRadius
     
 .passwordRender
     background-color: white
     padding: 10px 10px 13px 5px
     border: solid 1px $borderGrey
-    border-radius: 2px
+    border-radius: $borderRadius
     .generatedPassword 
-        font-family: monospace
-        color: black
+        font-family: 'Cutive Mono', monospace
+        padding: 10px 14px
+        font-size: 14px
+        width: 50px
+        font-weight: bold
+        color: $darkGrey
         display: inline
         background-color: #F5F5F5
-        margin: 5px
-        padding: 10px 
-        width: 50px
     button
         float: right
         position: relative
         top: -5px
+
+
+
 
 // toggles forked from https://codepen.io/LeonardMeagher2/
 input[type="checkbox"]
@@ -58,7 +82,7 @@ input[type="checkbox"]
   width: 40px
   height: 16px
   border: 1px solid #aaa
-  border-radius: 2px
+  border-radius: $borderRadius
   background: #ebebeb
   position: relative
   display: inline-block
@@ -75,7 +99,7 @@ input[type="checkbox"]
     height: 14px
     background: white
     border: 1px solid #aaa
-    border-radius: 2px
+    border-radius: $borderRadius
     transition: left 0.1s cubic-bezier(0.785, 0.135, 0.15, 0.86)
   &:checked
     background: $darkGrey
@@ -89,6 +113,9 @@ input[type="checkbox"]
     left: 22px
   &:disabled
     opacity: 0.5
+
+
+
 
 // slider forked from https://codepen.io/seanstopnik/
 .rangeSlider
@@ -141,7 +168,7 @@ input[type="checkbox"]
   color: #fff
   line-height: 20px
   text-align: center
-  border-radius: 3px
+  border-radius: $borderRadius
   background: $darkGrey
   padding: 5px 10px
   margin-left: 8px
@@ -159,4 +186,3 @@ input[type="checkbox"]
 input
   &::-moz-focus-inner, &::-moz-focus-outer
     border: 0
-    
