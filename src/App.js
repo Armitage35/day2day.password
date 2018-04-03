@@ -12,15 +12,11 @@ class App extends Component {
     passwordReadyForRender: false,
     generatedPassword: ''
   }
-  
+
   advancedOptionsHandler = () => {
     let advancedOptionsSwitch = this.state.displayAdvancedOptions;
     advancedOptionsSwitch = !advancedOptionsSwitch;
-    this.setState({displayAdvancedOptions: advancedOptionsSwitch});
-  }
-
-  copyButtonHandler = () => {
-    console.log('super');
+    this.setState({ displayAdvancedOptions: advancedOptionsSwitch });
   }
 
   displayPasswordHandler = () => {
@@ -33,7 +29,7 @@ class App extends Component {
       text += possible.charAt(Math.floor(Math.random() * possible.length));
     }
 
-    this.setState({ passwordReadyForRender: true, generatedPassword: text});
+    this.setState({ passwordReadyForRender: true, generatedPassword: text });
   }
 
 
@@ -43,7 +39,7 @@ class App extends Component {
         <Banner />
         <PWDOptions showAdvanced={this.state.displayAdvancedOptions} toggleAdvanced={this.advancedOptionsHandler} />
         <button id='fullWidth' onClick={this.displayPasswordHandler} className='bttn-material-flat bttn-md bttn-warning'>Generate a safe password</button>
-        <PWDRender ready={this.state.passwordReadyForRender} pwd={this.state.generatedPassword} copy={this.copyButtonHandler} />
+        <PWDRender ready={this.state.passwordReadyForRender} pwd={this.state.generatedPassword} />
       </div>
     );
   }
