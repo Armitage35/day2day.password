@@ -31,13 +31,16 @@ class App extends Component {
 
     this.setState({ passwordReadyForRender: true, generatedPassword: text });
   }
-
+  
+  sliderRangeHanlder = () => {
+    
+  }
 
   render() {
     return (
       <div className='App'>
         <Banner />
-        <PWDOptions showAdvanced={this.state.displayAdvancedOptions} toggleAdvanced={this.advancedOptionsHandler} />
+        <PWDOptions showAdvanced={this.state.displayAdvancedOptions} toggleAdvanced={this.advancedOptionsHandler} onSlide={this.sliderRangeHanlder}/>
         <button id='fullWidth' onClick={this.displayPasswordHandler} className='bttn-material-flat bttn-md bttn-warning'>Generate a safe password</button>
         <PWDRender ready={this.state.passwordReadyForRender} pwd={this.state.generatedPassword} />
       </div>
