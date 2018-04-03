@@ -9,9 +9,10 @@ const PWDOptions = (props) => {
             <h2>Set your preferences</h2>
             <h4>Password length</h4>
             <div className='rangeSlider'>
-              <input className='rangeSliderRange' type='range' min='0' max='25' />
-              <span className='rangeSliderValue'>0</span>
+              <input className='rangeSliderRange' type='range' min='6' max='25' step='1' onChange={props.onSlide}/>
+              <span className='rangeSliderValue'>{props.requestedLength}</span>
             </div>
+            <h4>Advanced {chevronDown}</h4>
         </div>
     );
     
@@ -41,7 +42,6 @@ const PWDOptions = (props) => {
         return (
             <div className='PWDOptions'>
                 {baseView}
-                <h4>Advanced {chevronDown}</h4>
                 {advancedOptions}
             </div>
         );
@@ -50,7 +50,6 @@ const PWDOptions = (props) => {
         return (
             <div className='PWDOptions'>
                 {baseView}
-                <h4>Advanced {chevronDown}</h4>
             </div>
         );
 

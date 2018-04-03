@@ -10,6 +10,7 @@ class App extends Component {
   state = {
     displayAdvancedOptions: false,
     passwordReadyForRender: false,
+    passwordLength: '25',
     generatedPassword: ''
   }
 
@@ -20,27 +21,27 @@ class App extends Component {
   }
 
   displayPasswordHandler = () => {
-    let charNum = Math.floor((Math.random() * 20) + 8),
-      text = '';
+    let text = '';
 
     const possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
 
-    for (var i = 0; i < charNum; i++) {
+    for (var i = 0; i < this.state.passwordLength; i++) {
       text += possible.charAt(Math.floor(Math.random() * possible.length));
     }
 
     this.setState({ passwordReadyForRender: true, generatedPassword: text });
   }
   
-  sliderRangeHanlder = () => {
-    
+  sliderRangeHanlder = (event) => {
+    let passwordLength = event.target.value.toUpperCase();
+    this.setState({passwordLength: passwordLength});
   }
 
   render() {
     return (
       <div className='App'>
         <Banner />
-        <PWDOptions showAdvanced={this.state.displayAdvancedOptions} toggleAdvanced={this.advancedOptionsHandler} onSlide={this.sliderRangeHanlder}/>
+        <PWDOptions showAdvanced={this.state.displayAdvancedOptions} toggleAdvanced={this.advancedOptionsHandler} onSlide={this.sliderRangeHanlder} requestedLength={this.state.passwordLength} />
         <button id='fullWidth' onClick={this.displayPasswordHandler} className='bttn-material-flat bttn-md bttn-warning'>Generate a safe password</button>
         <PWDRender ready={this.state.passwordReadyForRender} pwd={this.state.generatedPassword} />
       </div>
