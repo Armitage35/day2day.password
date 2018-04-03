@@ -19,8 +19,12 @@ class App extends Component {
     this.setState({displayAdvancedOptions: advancedOptionsSwitch});
   }
 
+  copyButtonHandler = () => {
+    console.log('super');
+  }
+
   displayPasswordHandler = () => {
-    let charNum = Math.floor((Math.random() * 11) + 5),
+    let charNum = Math.floor((Math.random() * 20) + 8),
       text = '';
 
     const possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
@@ -39,7 +43,7 @@ class App extends Component {
         <Banner />
         <PWDOptions showAdvanced={this.state.displayAdvancedOptions} toggleAdvanced={this.advancedOptionsHandler} />
         <button id='fullWidth' onClick={this.displayPasswordHandler} className='bttn-material-flat bttn-md bttn-warning'>Generate a safe password</button>
-        <PWDRender ready={this.state.passwordReadyForRender} pwd={this.state.generatedPassword} />
+        <PWDRender ready={this.state.passwordReadyForRender} pwd={this.state.generatedPassword} copy={this.copyButtonHandler} />
       </div>
     );
   }

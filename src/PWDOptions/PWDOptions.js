@@ -1,7 +1,6 @@
 import React from 'react';
 
 const PWDOptions = (props) => {
-    console.log(props.toggleAdvanced);
     if (props.showAdvanced) {
         return (
             <div className='PWDOptions'>
@@ -15,7 +14,7 @@ const PWDOptions = (props) => {
         return (
             <div className='PWDOptions'>
                 {baseView}
-                <h4>Advanced <button onClick={props.toggleAdvanced} className='chevronBttn'>{chevronDown}</button></h4>
+                <h4>Advanced <button onClick={props.toggleAdvanced}className='chevronBttn'>{chevronDown}</button></h4>
             </div>
         );
 
