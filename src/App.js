@@ -4,65 +4,74 @@ import PWDRender from './PWDRender/PWDRender.js';
 import Banner from './Banner/Banner.js';
 import './App.css';
 import './material-flat.css';
+import Cookies from 'js-cookie';
+
 
 class App extends Component {
 
-  state = {
-    allowSymbols: false,
-    allowNumbers: true,
-    allowUpChar: true,
-    allowLowChar: true,
-    displayAdvancedOptions: false,
-    passwordReadyForRender: false,
-    passwordLength: '25',
-    generatedPassword: ''
-  }
+   state = {
+      allowSymbols: false,
+      allowNumbers: true,
+      allowUpChar: true,
+      allowLowChar: true,
+      displayAdvancedOptions: false,
+      passwordReadyForRender: false,
+      passwordLength: '25',
+      generatedPassword: ''
+   }
 
-  advancedOptionsHandler = () => {
-    let advancedOptionsSwitch = this.state.displayAdvancedOptions;
-    advancedOptionsSwitch = !advancedOptionsSwitch;
-    this.setState({ displayAdvancedOptions: advancedOptionsSwitch });
-  }
+   advancedOptionsHandler = () => {
+      let advancedOptionsSwitch = this.state.displayAdvancedOptions;
+      advancedOptionsSwitch = !advancedOptionsSwitch;
+      this.setState({ displayAdvancedOptions: advancedOptionsSwitch });
+   }
 
-  displayPasswordHandler = () => {
-    let text = '';
+   displayPasswordHandler = () => {
+      let text = '';
 
-    const possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+      const possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
 
-    for (var i = 0; i < this.state.passwordLength; i++) {
-      text += possible.charAt(Math.floor(Math.random() * possible.length));
-    }
+      for (var i = 0; i < this.state.passwordLength; i++) {
+         text += possible.charAt(Math.floor(Math.random() * possible.length));
+      }
 
-    this.setState({ passwordReadyForRender: true, generatedPassword: text });
-  }
+      this.setState({ passwordReadyForRender: true, generatedPassword: text });
+   }
 
-  passwordPrefHanlder = (event) => {
-    switch (event.target.id){
-      case 'symbols':
-        this.setState({allowSymbols: event.target.checked});
-        break;
-      case 'numbers':
-        this.setState({allowNumbers: event.target.checked});
-        break;
-      case 'upperChar':
-        this.setState({allowUpChar: event.target.checked});
-        break;
-      case 'lowerChar':
-        this.setState({allowLowChar: event.target.checked});
-        break;
-      default: 
-        console.log('you are using an unknown preference setting.');
-    }
-  }
+   passwordPrefHanlder = (event) => {
+      switch (event.target.id) {
+         case 'symbols':
+            this.setState({ allowSymbols: event.target.checked });
+            break;
+         case 'numbers':
+            this.setState({ allowNumbers: event.target.checked });
+            break;
+         case 'upperChar':
+            this.setState({ allowUpChar: event.target.checked });
+            break;
+         case 'lowerChar':
+            this.setState({ allowLowChar: event.target.checked });
+            break;
+         default:
+            console.log('you are using an unknown preference setting.');
+      }
+      Cookies.set('passwordPreferences', {
+         allowLowChar: this.state.allowLowChar,
+         allowNumbers: this.state.allowNumbers,
+         allowSymbols: this.state.allowSymbols,
+         allowUpChar: this.state.allowUpChar,
+         passwordLength: this.state.passwordLength
+      });
+   }
 
-  sliderRangeHanlder = (event) => {
-    let passwordLength = event.target.value.toUpperCase();
-    this.setState({ passwordLength: passwordLength });
-  }
+   sliderRangeHanlder = (event) => {
+      let passwordLength = event.target.value.toUpperCase();
+      this.setState({ passwordLength: passwordLength });
+   }
 
-  render() {
-    return (
-      <div className='App'>
+   render() {
+      return (
+         <div className='App'>
         <Banner />
         <PWDOptions 
           allowSymbols={this.state.allowSymbols}
@@ -82,8 +91,8 @@ class App extends Component {
           ready={this.state.passwordReadyForRender} 
           pwd={this.state.generatedPassword} />
       </div>
-    );
-  }
+      );
+   }
 }
 
 export default App;
