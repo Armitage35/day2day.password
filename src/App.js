@@ -12,7 +12,7 @@ class App extends Component {
    state = {
       allowSymbols: false,
       allowNumbers: true,
-      allowUpChar: true,
+      allowUpChar: false,
       allowLowChar: true,
       displayAdvancedOptions: false,
       passwordReadyForRender: false,
@@ -55,13 +55,7 @@ class App extends Component {
          default:
             console.log('you are using an unknown preference setting.');
       }
-      Cookies.set('passwordPreferences', {
-         allowLowChar: this.state.allowLowChar,
-         allowNumbers: this.state.allowNumbers,
-         allowSymbols: this.state.allowSymbols,
-         allowUpChar: this.state.allowUpChar,
-         passwordLength: this.state.passwordLength
-      });
+      Cookies.set('passwordPreferences', this.state);
    }
 
    sliderRangeHanlder = (event) => {
