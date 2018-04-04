@@ -19,19 +19,19 @@ const PWDOptions = (props) => {
     const advancedOptions = (
         <div className='advancedOptions'>
             <div>
-                <input type='checkbox' id='symbols' />
+                <input type='checkbox' id='symbols' onChange={props.onPrefChange} />
                 <label htmlFor='symbols'>Include symbols</label>
             </div>
             <div>
-                <input type='checkbox' id='numbers' />
+                <input type='checkbox' id='numbers' onChange={props.onPrefChange} />
                 <label htmlFor='numbers'>Include numbers</label>
             </div>
             <div>
-                <input type='checkbox' id='upperChar' />
+                <input type='checkbox' id='upperChar' onChange={props.onPrefChange} />
                 <label htmlFor='upperChar'>Include uppercase characters</label>
             </div>
             <div>
-                <input type='checkbox' id='lowerChar' />
+                <input type='checkbox' id='lowerChar' onChange={props.onPrefChange} />
                 <label htmlFor='lowerChar'>Include lowercase characters</label>
             </div>
         </div>
