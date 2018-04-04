@@ -10,10 +10,10 @@ import Cookies from 'js-cookie';
 class App extends Component {
 
    state = {
-      allowSymbols: false,
+      allowLowChar: true,
       allowNumbers: true,
       allowUpChar: false,
-      allowLowChar: true,
+      allowSymbols: false,
       displayAdvancedOptions: false,
       passwordReadyForRender: false,
       passwordLength: '25',
@@ -26,11 +26,29 @@ class App extends Component {
       this.setState({ displayAdvancedOptions: advancedOptionsSwitch });
    }
 
+   getUsersSettings = () => {
+      let userPref = JSON.parse(Cookies.get('passwordPreferences'));
+      userPref !== undefined ? this.setState(userPref) : console.log('no pref set');
+   }
+
    displayPasswordHandler = () => {
       let text = '';
 
-      const possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+      const upperChar = ['ABCDEFGHIJKLMNOPQRSTUVWXYZ'],
+         lowerChar = 'abcdefghijklmnopqrstuvwxyz',
+         numbers = '0123456789',
+         symbols = '()`~!@#$%^&*-+=|{}[]:;"\'<>,.?/';
+      
+      let requested = [];
 
+      this.state.allowLowChar ? requested.push(lowerChar) : null;
+      this.state.allowNumbers ? requested.push(numbers) : null;
+      this.state.allowSymbols ? requested.push(symbols) : null;
+      this.state.allowUpChar  ? requested.push(upperChar) : null;
+      
+      let possible = "".concat(requested);
+      console.log(possible);
+   
       for (var i = 0; i < this.state.passwordLength; i++) {
          text += possible.charAt(Math.floor(Math.random() * possible.length));
       }
@@ -66,25 +84,25 @@ class App extends Component {
    render() {
       return (
          <div className='App'>
-        <Banner />
-        <PWDOptions 
-          allowSymbols={this.state.allowSymbols}
-          allowNumbers={this.state.allowNumbers}
-          allowUpChar={this.state.allowUpChar}
-          allowLowChar={this.state.allowLowChar}
-          onSlide={this.sliderRangeHanlder} 
-          onPrefChange={this.passwordPrefHanlder}
-          requestedLength={this.state.passwordLength}
-          showAdvanced={this.state.displayAdvancedOptions} 
-          toggleAdvanced={this.advancedOptionsHandler} 
-        />
-        
-        <button id='fullWidth' className='bttn-material-flat bttn-md bttn-warning' onClick={this.displayPasswordHandler} >Generate a safe password</button>
-        
-        <PWDRender 
-          ready={this.state.passwordReadyForRender} 
-          pwd={this.state.generatedPassword} />
-      </div>
+            <Banner />
+            <PWDOptions 
+             allowSymbols={this.state.allowSymbols}
+             allowNumbers={this.state.allowNumbers}
+             allowUpChar={this.state.allowUpChar}
+             allowLowChar={this.state.allowLowChar}
+             onSlide={this.sliderRangeHanlder} 
+             onPrefChange={this.passwordPrefHanlder}
+             requestedLength={this.state.passwordLength}
+             showAdvanced={this.state.displayAdvancedOptions} 
+             toggleAdvanced={this.advancedOptionsHandler} 
+           />
+           
+           <button id='fullWidth' className='bttn-material-flat bttn-md bttn-warning' onClick={this.displayPasswordHandler} >Generate a safe password</button>
+           
+           <PWDRender 
+             ready={this.state.passwordReadyForRender} 
+             pwd={this.state.generatedPassword} />
+         </div>
       );
    }
 }
