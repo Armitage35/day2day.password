@@ -29,6 +29,7 @@ class App extends Component {
    getUsersSettings = () => {
       let userPref = JSON.parse(Cookies.get('passwordPreferences'));
       userPref !== undefined ? this.setState(userPref) : console.log('no pref set');
+      this.setState({passwordLength: 25});
    }
 
    displayPasswordHandler = () => {
@@ -38,17 +39,16 @@ class App extends Component {
          lowerChar = 'abcdefghijklmnopqrstuvwxyz',
          numbers = '0123456789',
          symbols = '()`~!@#$%^&*-+=|{}[]:;"\'<>,.?/';
-      
+
       let requested = [];
 
-      this.state.allowLowChar ? requested.push(lowerChar) : null;
-      this.state.allowNumbers ? requested.push(numbers) : null;
-      this.state.allowSymbols ? requested.push(symbols) : null;
-      this.state.allowUpChar  ? requested.push(upperChar) : null;
-      
+      if (this.state.allowLowChar) requested.push(lowerChar);
+      if (this.state.allowNumbers) requested.push(numbers);
+      if (this.state.allowSymbols) requested.push(symbols);
+      if (this.state.allowUpChar) requested.push(upperChar);
+
       let possible = "".concat(requested);
-      console.log(possible);
-   
+
       for (var i = 0; i < this.state.passwordLength; i++) {
          text += possible.charAt(Math.floor(Math.random() * possible.length));
       }
@@ -59,26 +59,29 @@ class App extends Component {
    passwordPrefHanlder = (event) => {
       switch (event.target.id) {
          case 'symbols':
-            this.setState({ allowSymbols: event.target.checked });
+            this.setState({ allowSymbols: event.target.checked }, function(){Cookies.set('passwordPreferences', this.state)});
             break;
          case 'numbers':
-            this.setState({ allowNumbers: event.target.checked });
+            this.setState({ allowNumbers: event.target.checked }, function(){Cookies.set('passwordPreferences', this.state)});
             break;
          case 'upperChar':
-            this.setState({ allowUpChar: event.target.checked });
+            this.setState({ allowUpChar: event.target.checked },function(){Cookies.set('passwordPreferences', this.state)});
             break;
          case 'lowerChar':
-            this.setState({ allowLowChar: event.target.checked });
+            this.setState({ allowLowChar: event.target.checked }, function(){Cookies.set('passwordPreferences', this.state)});
             break;
          default:
             console.log('you are using an unknown preference setting.');
       }
-      Cookies.set('passwordPreferences', this.state);
    }
 
    sliderRangeHanlder = (event) => {
       let passwordLength = event.target.value.toUpperCase();
       this.setState({ passwordLength: passwordLength });
+   }
+
+   componentDidMount() {
+      this.getUsersSettings();
    }
 
    render() {
