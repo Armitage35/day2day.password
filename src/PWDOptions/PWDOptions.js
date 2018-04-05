@@ -22,6 +22,44 @@ const PWDOptions = (props) => {
         }
     };
 
+
+    const displayAvailableSettings = () => {
+        const availableSettings = {
+            symbols: {
+                id: 'symbols',
+                prop: 'props.allowSymbols',
+                label: 'Include symbols'
+            },
+            numbers: {
+                id: 'numbers',
+                prop: 'allowNumbers',
+                label: 'Include numbers'
+            },
+            upperChar: {
+                id: 'upperChar',
+                prop: 'allowUpChar',
+                label: 'Include uppercase characters'
+            },
+            lowerChar: {
+                id: 'lowerChar',
+                prop: 'allowLowChar',
+                label: 'Include lowercase characters'
+            }
+        };
+        const primaryKeys = Object.keys(availableSettings);
+        console.log(availableSettings[primaryKeys[1]].id); // using a string for a property name
+        let test = primaryKeys.map((obj, i) => 
+            <div>
+                <input type='checkbox' id={availableSettings[obj].id} 
+                    onChange={props.onPrefChange} 
+                    defaultChecked={stateChecker(props.allowSymbols)}
+                />
+                <label htmlFor={availableSettings[obj].id}>{availableSettings[obj].label}</label>
+            </div>
+        )
+        return test
+    };
+
     const advancedOptions = (
         <div className='advancedOptions'>
             <div>
@@ -61,6 +99,7 @@ const PWDOptions = (props) => {
             <div className='PWDOptions'>
                 {baseView}
                 {advancedOptions}
+                {displayAvailableSettings()}
             </div>
         );
     }

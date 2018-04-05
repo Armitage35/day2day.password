@@ -28,7 +28,7 @@ class App extends Component {
 
    getUsersSettings = () => {
       let userPref = JSON.parse(Cookies.get('passwordPreferences'));
-      userPref !== undefined ? this.setState(userPref) : console.log('no pref set');
+      if (userPref !== undefined) this.setState(userPref);
       this.setState({passwordLength: 25});
    }
 
