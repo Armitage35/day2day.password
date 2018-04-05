@@ -23,12 +23,12 @@ const PWDOptions = (props) => {
     };
 
 
-    const displayAvailableSettings = () => {
-        const availableSettings = {
+    const displayAdvancedSettings = () => {
+        const availableAdvancedSettings = {
             symbols: {
                 id: 'symbols',
-                prop: 'props.allowSymbols',
-                label: 'Include symbols'
+                prop: true,
+                label: 'Include symbols',
             },
             numbers: {
                 id: 'numbers',
@@ -46,60 +46,27 @@ const PWDOptions = (props) => {
                 label: 'Include lowercase characters'
             }
         };
-        const primaryKeys = Object.keys(availableSettings);
-        console.log(availableSettings[primaryKeys[1]].id); // using a string for a property name
-        let test = primaryKeys.map((obj, i) => 
-            <div>
-                <input type='checkbox' id={availableSettings[obj].id} 
-                    onChange={props.onPrefChange} 
-                    defaultChecked={stateChecker(props.allowSymbols)}
-                />
-                <label htmlFor={availableSettings[obj].id}>{availableSettings[obj].label}</label>
-            </div>
-        )
-        return test
-    };
 
-    const advancedOptions = (
-        <div className='advancedOptions'>
-            <div>
-                <input type='checkbox' id='symbols' 
+        let advancedSettings = Object.keys(availableAdvancedSettings).map((obj, i) => 
+            <div key={availableAdvancedSettings[obj].id}>
+                <input type='checkbox' 
+                    id={availableAdvancedSettings[obj].id} 
                     onChange={props.onPrefChange} 
-                    defaultChecked={stateChecker(props.allowSymbols)}
+                    // defaultChecked={stateChecker(props.availableSettings[obj].prop)}
                 />
-                <label htmlFor='symbols'>Include symbols</label>
+                <label 
+                    htmlFor={availableAdvancedSettings[obj].id}>{availableAdvancedSettings[obj].label}</label>
             </div>
-            <div>
-                <input type='checkbox' id='numbers' 
-                    onChange={props.onPrefChange} 
-                    defaultChecked={stateChecker(props.allowNumbers)} 
-                    />
-                <label htmlFor='numbers'>Include numbers</label>
-            </div>
-            <div>
-                <input type='checkbox' id='upperChar' 
-                    onChange={props.onPrefChange}
-                    defaultChecked={stateChecker(props.allowUpChar)}
-                    />
-                <label htmlFor='upperChar'>Include uppercase characters</label>
-            </div>
-            <div>
-                <input type='checkbox' id='lowerChar' 
-                    onChange={props.onPrefChange} 
-                    defaultChecked={stateChecker(props.allowLowChar)}
-                    />
-                <label htmlFor='lowerChar'>Include lowercase characters</label>
-            </div>
-        </div>
-    );
+        );
+        return advancedSettings;
+    };
 
     // What we actually want to return
     if (props.showAdvanced) {
         return (
             <div className='PWDOptions'>
                 {baseView}
-                {advancedOptions}
-                {displayAvailableSettings()}
+                {displayAdvancedSettings()}
             </div>
         );
     }

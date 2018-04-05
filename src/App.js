@@ -89,15 +89,15 @@ class App extends Component {
          <div className='App'>
             <Banner />
             <PWDOptions 
-             allowSymbols={this.state.allowSymbols}
-             allowNumbers={this.state.allowNumbers}
-             allowUpChar={this.state.allowUpChar}
-             allowLowChar={this.state.allowLowChar}
-             onSlide={this.sliderRangeHanlder} 
-             onPrefChange={this.passwordPrefHanlder}
-             requestedLength={this.state.passwordLength}
-             showAdvanced={this.state.displayAdvancedOptions} 
-             toggleAdvanced={this.advancedOptionsHandler} 
+               allowSymbols={this.state.allowSymbols}
+               allowNumbers={this.state.allowNumbers}
+               allowUpChar={this.state.allowUpChar}
+               allowLowChar={this.state.allowLowChar}
+               onSlide={this.sliderRangeHanlder} 
+               onPrefChange={this.passwordPrefHanlder}
+               requestedLength={this.state.passwordLength}
+               showAdvanced={this.state.displayAdvancedOptions} 
+               toggleAdvanced={this.advancedOptionsHandler} 
            />
            
            <button id='fullWidth' className='bttn-material-flat bttn-md bttn-warning' onClick={this.displayPasswordHandler} >Generate a safe password</button>
