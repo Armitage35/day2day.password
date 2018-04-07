@@ -52,6 +52,10 @@ class App extends Component {
       for (var i = 0; i < this.state.passwordLength; i++) {
          text += possible.charAt(Math.floor(Math.random() * possible.length));
       }
+      
+      if (text === '') {
+         text = 'Select at least one option';
+      }
 
       this.setState({ passwordReadyForRender: true, generatedPassword: text });
    }

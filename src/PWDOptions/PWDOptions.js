@@ -57,11 +57,10 @@ const PWDOptions = (props) => {
     };
     
     const stateChecker = () => {
-        console.log(props);
-        if (props.allowSymbols) {availableAdvancedSettings.symbols.prop = 'checked'} else {availableAdvancedSettings.symbols.prop = ''};
-        if (props.allowNumbers) {availableAdvancedSettings.numbers.prop = 'checked'} else {availableAdvancedSettings.numbers.prop = ''};
-        if (props.allowUpChar) {availableAdvancedSettings.upperChar.prop = 'checked'} else {availableAdvancedSettings.upperChar.prop = ''};
-        if (props.allowLowChar) {availableAdvancedSettings.lowerChar.prop = 'checked'} else {availableAdvancedSettings.lowerChar.prop = ''};
+        if (props.allowSymbols) {availableAdvancedSettings.symbols.prop = 'checked'} else {availableAdvancedSettings.symbols.prop = ''}
+        if (props.allowNumbers) {availableAdvancedSettings.numbers.prop = 'checked'} else {availableAdvancedSettings.numbers.prop = ''}
+        if (props.allowUpChar) {availableAdvancedSettings.upperChar.prop = 'checked'} else {availableAdvancedSettings.upperChar.prop = ''}
+        if (props.allowLowChar) {availableAdvancedSettings.lowerChar.prop = 'checked'} else {availableAdvancedSettings.lowerChar.prop = ''}
     };
 
     // What we actually want to return
