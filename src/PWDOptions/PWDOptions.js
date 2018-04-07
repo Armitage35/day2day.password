@@ -16,49 +16,52 @@ const PWDOptions = (props) => {
         </div>
     );
 
-    const stateChecker = (assignedValue) => {
-        if (assignedValue) {
-            return 'checked';
+
+    const availableAdvancedSettings = {
+        symbols: {
+            id: 'symbols',
+            prop: 'checked',
+            label: 'Include symbols',
+        },
+        numbers: {
+            id: 'numbers',
+            prop: 'checked',
+            label: 'Include numbers'
+        },
+        upperChar: {
+            id: 'upperChar',
+            prop: '',
+            label: 'Include uppercase characters'
+        },
+        lowerChar: {
+            id: 'lowerChar',
+            prop: 'checked',
+            label: 'Include lowercase characters'
         }
     };
-
-
+    
     const displayAdvancedSettings = () => {
-        const availableAdvancedSettings = {
-            symbols: {
-                id: 'symbols',
-                prop: true,
-                label: 'Include symbols',
-            },
-            numbers: {
-                id: 'numbers',
-                prop: 'allowNumbers',
-                label: 'Include numbers'
-            },
-            upperChar: {
-                id: 'upperChar',
-                prop: 'allowUpChar',
-                label: 'Include uppercase characters'
-            },
-            lowerChar: {
-                id: 'lowerChar',
-                prop: 'allowLowChar',
-                label: 'Include lowercase characters'
-            }
-        };
-
+        stateChecker();
         let advancedSettings = Object.keys(availableAdvancedSettings).map((obj, i) => 
             <div key={availableAdvancedSettings[obj].id}>
                 <input type='checkbox' 
                     id={availableAdvancedSettings[obj].id} 
                     onChange={props.onPrefChange} 
-                    // defaultChecked={stateChecker(props.availableSettings[obj].prop)}
+                    defaultChecked={availableAdvancedSettings[obj].prop}
                 />
                 <label 
                     htmlFor={availableAdvancedSettings[obj].id}>{availableAdvancedSettings[obj].label}</label>
             </div>
         );
         return advancedSettings;
+    };
+    
+    const stateChecker = () => {
+        console.log(props);
+        if (props.allowSymbols) {availableAdvancedSettings.symbols.prop = 'checked'} else {availableAdvancedSettings.symbols.prop = ''};
+        if (props.allowNumbers) {availableAdvancedSettings.numbers.prop = 'checked'} else {availableAdvancedSettings.numbers.prop = ''};
+        if (props.allowUpChar) {availableAdvancedSettings.upperChar.prop = 'checked'} else {availableAdvancedSettings.upperChar.prop = ''};
+        if (props.allowLowChar) {availableAdvancedSettings.lowerChar.prop = 'checked'} else {availableAdvancedSettings.lowerChar.prop = ''};
     };
 
     // What we actually want to return

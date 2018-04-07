@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "depcheck": "^0.6.9",
     "gulp": "^3.9.1",
     "gulp-cli": "^2.0.1",
     "gulp-sass": "^3.2.1",
@@ -17,5 +18,8 @@
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
+  },
+  "devDependencies": {
+    "gulp": "^3.9.1"
   }
 }
