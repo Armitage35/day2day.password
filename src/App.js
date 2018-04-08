@@ -27,8 +27,8 @@ class App extends Component {
    }
 
    getUsersSettings = () => {
-      let userPref = JSON.parse(Cookies.get('passwordPreferences'));
-      if (userPref !== null) this.setState(userPref);
+      let userPref = Cookies.get('passwordPreferences');
+      if (userPref !== undefined) this.setState(JSON.parse(userPref));
       this.setState({passwordLength: 25, displayAdvancedOptions: false, generatedPassword: '', passwordReadyForRender: false});
    }
 
