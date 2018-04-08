@@ -20,3 +20,6 @@ yarn-error.log*
 # CSS files
 *.css
 src/**/*.css
+
+# chrome extension
+/chromeExtension
