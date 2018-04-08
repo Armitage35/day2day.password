@@ -22,4 +22,7 @@ yarn-error.log*
 src/**/*.css
 
 # chrome extension
-/chromeExtension
+/chromeExtension/*
+
+# build
+/build.*
