@@ -40,6 +40,13 @@ const PWDOptions = (props) => {
         }
     };
     
+    const stateChecker = () => {
+        if (props.allowSymbols) {availableAdvancedSettings.symbols.prop = 'checked'} else {availableAdvancedSettings.symbols.prop = ''}
+        if (props.allowNumbers) {availableAdvancedSettings.numbers.prop = 'checked'} else {availableAdvancedSettings.numbers.prop = ''}
+        if (props.allowUpChar) {availableAdvancedSettings.upperChar.prop = 'checked'} else {availableAdvancedSettings.upperChar.prop = ''}
+        if (props.allowLowChar) {availableAdvancedSettings.lowerChar.prop = 'checked'} else {availableAdvancedSettings.lowerChar.prop = ''}
+    };
+    
     const displayAdvancedSettings = () => {
         stateChecker();
         let advancedSettings = Object.keys(availableAdvancedSettings).map((obj, i) => 
@@ -56,12 +63,6 @@ const PWDOptions = (props) => {
         return advancedSettings;
     };
     
-    const stateChecker = () => {
-        if (props.allowSymbols) {availableAdvancedSettings.symbols.prop = 'checked'} else {availableAdvancedSettings.symbols.prop = ''}
-        if (props.allowNumbers) {availableAdvancedSettings.numbers.prop = 'checked'} else {availableAdvancedSettings.numbers.prop = ''}
-        if (props.allowUpChar) {availableAdvancedSettings.upperChar.prop = 'checked'} else {availableAdvancedSettings.upperChar.prop = ''}
-        if (props.allowLowChar) {availableAdvancedSettings.lowerChar.prop = 'checked'} else {availableAdvancedSettings.lowerChar.prop = ''}
-    };
 
     // What we actually want to return
     if (props.showAdvanced) {
