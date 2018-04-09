@@ -21,7 +21,11 @@ class App extends Component {
 
    advancedOptionsHandler = () => {
       let advancedOptionsSwitch = this.state.displayAdvancedOptions;
+      
       advancedOptionsSwitch = !advancedOptionsSwitch;
+      
+      document.querySelector('.chevronBttn').classList.toggle('chevronUp');
+      
       this.setState({ displayAdvancedOptions: advancedOptionsSwitch });
    }
 
