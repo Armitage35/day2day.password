@@ -5,12 +5,13 @@ const PWDRender = (props) => {
         return (
             <div>
                 <div className='passwordRender'>
-                    <p className='generatedPassword'>{props.pwd}</p>
-                    <button className='bttn-material-flat bttn-sm bttn-warning' id='copy'>Copy</button>
+                    <textarea id='generatedPassword' rows="1" cols="26" value={props.pwd} readOnly onClick={props.onClick}></textarea>
+                    <button className='bttn-material-flat bttn-sm bttn-warning' id='copy' onClick={props.onClick}>Copy</button>
                 </div>
             </div>
         );
-    } else {
+    }
+    else {
         return null;
     }
 };
