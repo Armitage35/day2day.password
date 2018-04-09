@@ -16,6 +16,21 @@ const PWDOptions = (props) => {
         </div>
     );
 
+    const displayAdvancedSettings = () => {
+        stateChecker();
+        
+        let advancedSettings = Object.keys(availableAdvancedSettings).map((obj, i) =>
+            <div key={availableAdvancedSettings[obj].id}>
+                <input type='checkbox' 
+                    id={availableAdvancedSettings[obj].id} 
+                    onChange={props.onPrefChange} 
+                    defaultChecked={availableAdvancedSettings[obj].prop}
+                />
+                <label htmlFor={availableAdvancedSettings[obj].id}>{availableAdvancedSettings[obj].label}</label>
+            </div>
+        );
+        return advancedSettings;
+    };
 
     const availableAdvancedSettings = {
         symbols: {
@@ -25,7 +40,7 @@ const PWDOptions = (props) => {
         },
         numbers: {
             id: 'numbers',
-            prop: 'checked',
+            prop: '',
             label: 'Include numbers'
         },
         upperChar: {
@@ -35,35 +50,28 @@ const PWDOptions = (props) => {
         },
         lowerChar: {
             id: 'lowerChar',
-            prop: 'checked',
+            prop: '',
             label: 'Include lowercase characters'
         }
     };
     
     const stateChecker = () => {
-        if (props.allowSymbols) {availableAdvancedSettings.symbols.prop = 'checked'} else {availableAdvancedSettings.symbols.prop = ''}
-        if (props.allowNumbers) {availableAdvancedSettings.numbers.prop = 'checked'} else {availableAdvancedSettings.numbers.prop = ''}
-        if (props.allowUpChar) {availableAdvancedSettings.upperChar.prop = 'checked'} else {availableAdvancedSettings.upperChar.prop = ''}
-        if (props.allowLowChar) {availableAdvancedSettings.lowerChar.prop = 'checked'} else {availableAdvancedSettings.lowerChar.prop = ''}
+        
+        let sentProperties = [props.allowSymbols, props.allowNumbers, props.allowUpChar, props.allowLowChar];
+        let settingNames = ['symbols', 'numbers', 'upperChar', 'lowerChar'];
+        
+        availableAdvancedSettings.symbols.prop = 'checked';
+        
+        for (let i = 0; i < sentProperties.length; i++) {
+            if (sentProperties[i]) {
+                 availableAdvancedSettings[settingNames[i]].prop = 'checked';
+            }
+            else { 
+                availableAdvancedSettings[settingNames[i]].prop = '';
+            };
+        };
     };
     
-    const displayAdvancedSettings = () => {
-        stateChecker();
-        let advancedSettings = Object.keys(availableAdvancedSettings).map((obj, i) => 
-            <div key={availableAdvancedSettings[obj].id}>
-                <input type='checkbox' 
-                    id={availableAdvancedSettings[obj].id} 
-                    onChange={props.onPrefChange} 
-                    defaultChecked={availableAdvancedSettings[obj].prop}
-                />
-                <label 
-                    htmlFor={availableAdvancedSettings[obj].id}>{availableAdvancedSettings[obj].label}</label>
-            </div>
-        );
-        return advancedSettings;
-    };
-    
-
     // What we actually want to return
     if (props.showAdvanced) {
         return (

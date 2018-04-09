@@ -74,7 +74,7 @@ class App extends Component {
             this.setState({ allowLowChar: event.target.checked }, function(){Cookies.set('passwordPreferences', this.state)});
             break;
          default:
-            console.log('you are using an unknown preference setting.');
+            alert('you are using an unknown preference setting.');
       }
    }
 
