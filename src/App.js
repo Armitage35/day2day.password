@@ -41,10 +41,10 @@ class App extends Component {
       iziToast.success({
          title: 'Password copied',
          position: 'center',
-         message: 'You can now pass',
+         message: 'You shall now pass',
          timeout: 2000,
-         // overlay: true
       });
+      window.analytics.track('Password copied');
    }
 
    getUsersSettings = () => {
@@ -79,6 +79,8 @@ class App extends Component {
       }
 
       this.setState({ passwordReadyForRender: true, generatedPassword: text });
+      
+      window.analytics.track('Password generated');
    }
 
    passwordPrefHanlder = (event) => {
