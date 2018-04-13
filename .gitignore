@@ -25,7 +25,7 @@ src/**/*.css
 /chromeExtension/*
 
 # build
-/build/*
+; /build/*
 
 # production
 /build
