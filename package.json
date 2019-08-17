@@ -2,6 +2,7 @@
   "name": "d2d.password",
   "version": "0.1.0",
   "private": true,
+  "homepage" : "https://armitage35.github.io/day2day.password/",
   "dependencies": {
     "depcheck": "^0.6.9",
     "gh-pages": "^1.1.0",
